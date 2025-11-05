@@ -1,0 +1,87 @@
+FNN
+
+Step 1: Import necessary libraries — TensorFlow, Keras modules (Sequential, Dense, Flatten, Optimizers, Losses, Metrics).
+Step 2: Load the MNIST dataset using tf.keras.datasets.mnist.load_data().
+Step 3: Normalize the input data by dividing pixel values by 255.0 to scale between 0 and 1.
+Step 4: Define different optimizers — Adam, SGD, and SGD with momentum.
+Step 5: For each optimizer, initialize a Sequential model with:
+  • Flatten layer (input: 28×28 image)
+  • Dense layer with 128 neurons and ReLU activation
+  • Output Dense layer with 10 neurons and softmax activation
+Step 6: Compile the model with the current optimizer, using SparseCategoricalCrossentropy as loss and SparseCategoricalAccuracy as metric.
+Step 7: Train the model for 5 epochs using model.fit() on the training data.
+Step 8: Evaluate the trained model using model.evaluate() on test data.
+Step 9: Print the test accuracy for each optimizer to compare performance.
+Step 10: End the program
+
+CNN
+
+Step 1: Import required libraries — TensorFlow and Matplotlib.
+Step 2: Load the MNIST dataset using tf.keras.datasets.mnist.load_data().
+Step 3: Normalize the dataset by dividing pixel values by 255.0 and reshape images to (28, 28, 1) to include the channel dimension.
+Step 4: Build a Convolutional Neural Network (CNN) using Sequential API with the following layers:
+  • Conv2D layer with 16 filters, 3×3 kernel, and ReLU activation.
+  • MaxPooling2D layer to reduce spatial dimensions.
+  • Flatten layer to convert 2D data into 1D.
+  • Dense layer with 10 neurons and Softmax activation for 10-class output.
+Step 5: Compile the model with Adam optimizer, Sparse Categorical Crossentropy loss, and Accuracy metric.
+Step 6: Train the model using model.fit() for 3 epochs with validation data as test set.
+Step 7: Evaluate the model on the test dataset using model.evaluate().
+Step 8: Print the test accuracy.
+Step 9: Plot training and validation accuracy using Matplotlib.
+Step 10: End the program.
+
+LENET
+
+Step 1: Import required libraries
+Import TensorFlow and Keras modules for building, training, and evaluating the CNN model.
+Step 2: Load the MNIST dataset using tf.keras.datasets.mnist.load_data().
+The dataset contains 70,000 grayscale images of handwritten digits (60,000 for training and 10,000 for testing).
+Step 3: Preprocess the images
+Reshape the data to include the channel dimension → from (28×28) to (28×28×1).
+Resize all images from 28×28 to 32×32, because LeNet-5 originally uses 32×32 grayscale inputs.
+Normalize pixel values to the range [0,1] for better training stability and faster convergence.
+Step 4: Define the LeNet-5 model architecture
+C1: Conv2D with 6 filters of size 5×5 and tanh activation.
+P1: MaxPooling layer (2×2).
+C2: Conv2D with 16 filters of size 5×5 and tanh activation.
+P2: MaxPooling layer (2×2).
+Flatten: Converts feature maps into a 1D vector.
+F6: Fully connected layer with 120 neurons and tanh activation.
+F7: Fully connected layer with 84 neurons and tanh activation.
+Output: Dense layer with 10 neurons (for digits 0–9) and softmax activation.
+Step 5: Compile the model
+Use the Adam optimizer with learning rate = 0.001, sparse categorical crossentropy as loss, and accuracy as the metric.
+Step 6: Train the model
+Train the network using model.fit() for 3 epochs with a batch size of 128 and include validation data (test set).
+Step 7: Evaluate the trained model
+Evaluate the model’s performance using model.evaluate() on the test dataset to obtain the final loss and accuracy.
+Step 8: Display the final test accuracy and loss.
+Step 9: End the program.
+
+GRADENT
+
+Step 1: Import the required libraries — numpy for computation and matplotlib for plotting.
+Step 2: Generate synthetic data points for x and y using a linear relation 
+𝑦=4+3𝑥+noise y=4+3x+noise.
+Step 3: Add a bias term (x₀ = 1) to create the feature matrix X.
+Step 4: Initialize model parameters θ = [0, 0], learning rate α = 0.01, and number of iterations.
+Step 5: For each iteration, compute the prediction (X·θ) and the error (X·θ − y).
+Step 6: Update parameters using the Gradient Descent rule:
+  θ = θ − (α/m) · Xᵀ · (X·θ − y).
+Step 7: Compute the cost function 𝐽(𝜃)=12𝑚∑(𝑒𝑟𝑟𝑜𝑟2)J(θ)=2m1​∑(error2) and store it to track convergence.
+Step 8: After convergence, print optimized parameters, plot the regression line, and show the cost function curve.
+
+RNN
+
+Step 1: Import the necessary libraries — TensorFlow, Keras, and Matplotlib for plotting.
+Step 2: Load the IMDB dataset using imdb.load_data() with the top 10,000 most frequent words.
+Step 3: Pad or truncate each review to a fixed length (200 words) using pad_sequences() so all sequences have equal length.
+Step 4: Build a Sequential model with the following layers:
+ • Embedding layer: Converts integer word indices into dense vector representations.
+ • SimpleRNN layer: Processes sequences one timestep at a time and remembers previous context.
+ • Dense layer: Single neuron with sigmoid activation for binary output (positive/negative sentiment).
+Step 5: Compile the model using binary_crossentropy as loss, adam optimizer, and accuracy as metric.
+Step 6: Train the model on training data for 5 epochs with validation split (20% of training data).
+Step 7: Evaluate model performance using test data and print test accuracy.
+Step 8: Plot training and validation accuracy and loss curves for visualization.
